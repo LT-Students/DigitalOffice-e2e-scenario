@@ -11,10 +11,11 @@ describe("log in", ()  => {
     cy.get('a[href*="/admin"]').click();
     cy.get('.dashboard .section:nth-child(3) .section__button:nth-child(3)').click();
     //cy.get('tr[ng-reflect-router-link="93b58aa7-0542-4ee6-beee-71c2ca"]').click();
-    //cy.get('mat-select[aria-label="Items per page:"]').click();
-   // cy.contains('50').click();
+   cy.get('mat-select[aria-label="Items per page:"]').click();
+   cy.contains('50').click();
+   cy.get('tbody tr:nth-child(1) td:first-child').click();
     //cy.get('button[aria-label="Next page"]').click();
-    cy.contains('АвтотестАв').click();
+    //cy.contains('АвтотестАв').click();
     cy.get('[src*="assets/svg/edit.svg"]').click();
     cy.get('input[ng-reflect-name="/name"]').clear();
     cy.get('input[ng-reflect-name="/name"]').type(userID_Alpha_Numeric())

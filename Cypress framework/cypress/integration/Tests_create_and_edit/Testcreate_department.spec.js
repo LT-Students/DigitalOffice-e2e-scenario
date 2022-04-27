@@ -11,7 +11,16 @@ describe("log in", ()  => {
     //
     cy.get('a[href*="/admin"]').click();
     cy.get('.dashboard .section:nth-child(2) .section__button:nth-child(3)').click()
-    cy.get('input[ng-reflect-type="text"]').type("АвтотестАв");
+    cy.get('input[ng-reflect-type="text"]').type(userID_Alpha_Numeric())
+    function userID_Alpha_Numeric() {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    
+        for (var i = 0; i < 10; i++)
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    
+        return text;
+      }
     cy.get('.mat-select-value[ng-reflect-ng-switch="true"]').click();
     cy.get('.mat-option:nth-child(20)').click();
     cy.get('.mat-input-element[data-placeholder="Напишите немного о новом департаменте"]').type("Автотест");
