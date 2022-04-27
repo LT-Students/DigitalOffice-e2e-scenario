@@ -17,12 +17,13 @@ describe("log in", ()  => {
     cy.get('input[ng-reflect-placeholder="Введите отчество"]').type("Александровна")
     cy.get('input[data-placeholder="Введите E-mail"]').type(userID_Alpha_Numeric())
     function userID_Alpha_Numeric() {
-      var possible = "AB@fuu.com";
-      var text = "FF@fuu.com";
+      var text = "@huhu.ru";
+      var possible = "hhrhggjgtfyfcgvbjhvbyuvy";
+      
   
       for (var i = 0; i < 10; i++)
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-        return text;
+      possible+=possible.charAt(Math.random() * possible.length);
+        return possible+text;
   }
     cy.get('mat-select[placeholder="Выберите должность"]').click();
     cy.get('mat-option:first-child').click();
