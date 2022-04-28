@@ -104,7 +104,6 @@ describe('TC-293', () => {
 
             return str.replace(/[^a-zA-Z0-9 -]/, "   ");
                 //.replace("   ",    ); //(/\s/g, "  "); //(/[^a-zA-Z0-9 -]/, "   ");
-                //replace(/\s/g, "  ")
             };
         cy.get('button[type="submit"]').click();
     });
