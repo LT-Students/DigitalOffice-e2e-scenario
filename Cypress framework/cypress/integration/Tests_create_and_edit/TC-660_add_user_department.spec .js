@@ -8,6 +8,7 @@ describe("log in", ()  => {
     cy.get('input[type="password"]').type("ltstudents");
     cy.log('Клик по кнопке "Войти"');
     cy.get('button[type="submit"]').click(); 
+  
     cy.get('a[href*="/admin"]').click();
     cy.get('.dashboard .section:nth-child(3) .section__button:nth-child(3)').click();
     //cy.get('tr[ng-reflect-router-link="93b58aa7-0542-4ee6-beee-71c2ca"]').click();
