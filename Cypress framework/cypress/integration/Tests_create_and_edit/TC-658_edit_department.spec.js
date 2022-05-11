@@ -24,7 +24,7 @@ describe("log in", ()  => {
     }
     cy.get('.new-department__input-container mat-form-field:nth-child(2)').click();
     cy.get('.mat-select-panel-wrap .mat-option:nth-child(2)').click();
-    cy.get('.new-department__input-container mat-form-field:nth-child(3)').type("департамент научной литературы 1 2 3 4");
+    cy.get('.new-department__input-container mat-form-field:nth-child(3)').clear().type("департамент научной литературы 1 2 3 4");
     cy.contains('Редактировать департамент ').click();
   });
 });
