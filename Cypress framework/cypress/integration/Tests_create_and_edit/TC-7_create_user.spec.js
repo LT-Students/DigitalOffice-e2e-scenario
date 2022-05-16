@@ -29,7 +29,7 @@ describe("log in", ()  => {
     cy.get('mat-option:first-child').click();
     cy.get('mat-select[placeholder="Выберите офис"').click();
     cy.get('mat-option:first-child').click();
-    cy.get('button[aria-label="Open calendar"]').click();
+    cy.contains('date_range:nth-child(2)').click();
     cy.get('tbody tr:nth-child(1) td:nth-child(4)').click().wait(500);
     cy.get('button[type="submit"]').click();
   });
