@@ -5,10 +5,12 @@ describe("Log in", function(){
 		cy.get('input[type="password"]').type ('5WZWqx#NPK')
 		cy.get('button[type="submit"]').click ()
 		cy.visit("https://dev.ltdo.xyz/admin/dashboard")
-		cy.get('img[alt="add-project-icon"]').eq(4).click ()
-		cy.get('input[type="text"]').eq(0).type ('П')
-		cy.get('input[type="text"]').eq(1).type ('С')
-		cy.get('button[type="submit"]').click ()
-
+		cy.get('img[alt="add-project-icon"]').eq(8).click ()
+		cy.get('mat-select[role="combobox"]').eq(0).click ()
+		cy.get('mat-option[role="option"]').eq(0).click ()
+		cy.get('mat-select[role="combobox"]').eq(0).click ()
+		cy.get('mat-option[role="option"]').eq(1).click ()
+		
+		
 	})
 })

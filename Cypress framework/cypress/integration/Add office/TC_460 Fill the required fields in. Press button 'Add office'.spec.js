@@ -1,4 +1,4 @@
-describe("Log in", function(){
+describe("TC_460", function(){
 	it("Sing in", function(){
 		cy.visit("https://dev.ltdo.xyz/auth/login")
 		cy.get('input[type="email"]').type ('Alyona')
