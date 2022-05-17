@@ -21,7 +21,7 @@ describe("log in", ()  => {
         return text;
       }
     cy.get('.mat-select-value[ng-reflect-ng-switch="true"]').click();
-    cy.get('.mat-option:nth-child(20)').click();
+    cy.get('.mat-option:nth-child(6)').click();
     cy.get('.mat-input-element[data-placeholder="Напишите немного о новом департаменте"]').type("Автотест");
     cy.get('button[type="submit"]').click();
   

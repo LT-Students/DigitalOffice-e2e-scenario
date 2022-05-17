@@ -13,6 +13,7 @@ describe("log in", ()  => {
     //cy.contains('Aфанасий Фет').click();
     cy.get('tr[ng-reflect-router-link="8becd650-27bc-49c0-a687-0088fc"]').click();
     cy.get('img[src="../../../../../assets/svg/edit.svg"]').click();
+    cy.get('img[src="../../../../../assets/svg/edit.svg"]').eq(1).click();
     cy.get('input[ng-reflect-name="/LastName"]').clear();
     cy.get('input[ng-reflect-name="/FirstName"]').clear();
     cy.get('input[ng-reflect-name="/MiddleName"]').clear();
@@ -21,7 +22,7 @@ describe("log in", ()  => {
     cy.get('input[ng-reflect-name="/FirstName"]').type("Фет");
     cy.get('input[ng-reflect-name="/MiddleName"]').type("Фетин");
     cy.get('input[ng-reflect-name="/DateOfBirth"]').type("12.05.1995");
-    cy.get('textarea[ng-reflect-placeholder="Напишите немного о себе или ос"]').type("12.05.1995");
+    cy.get('textarea[ng-reflect-placeholder="Написать..."]').clear().type("работа не волк");
     cy.get('button[type="submit"]').click();
     });
   });
