@@ -7,7 +7,7 @@ describe( 'TC-99', () => {
         cy.visit('https://dev.ltdo.xyz/auth/login');
         cy.get('input[type="email"]').type(login);
         cy.get('input[type="password"]').type(password);
-        cy.get('button[type="submit"]').click();
+        cy.get('button[type="submit"]').should('be.visible').click();
     });
 });
 
@@ -26,7 +26,7 @@ describe('TC-284', () => {
                 
             return text;
             }
-        cy.get('button[type="submit"]').click();
+        cy.get('button[type="submit"]').should('be.visible').click();
     });
 });
 
@@ -105,7 +105,7 @@ describe('TC-293', () => {
             return str.replace(/[^a-zA-Z0-9 -]/, "   ");
                 //. "); //(/[^a-zA-Z0-9 -]/, "   ");
             };
-        cy.get('button[type="submit"]').click();
+        cy.get('button[type="submit"]').should('be.visible').click();
     });
 });
 
@@ -128,7 +128,7 @@ describe('TC-296', () => {
 describe('TC-297', () => {
     it ('tc-297', () => {
         cy.visit('https://dev.ltdo.xyz/auth/login');
-        cy.get('input[type="email"]').type('Marina1');
+        cy.get('input[type="email"]').type("Marina1");
         cy.get('input[type="password"]').type(password())
             function password() {
             var str = "8CI3Uo3Ymp_";
