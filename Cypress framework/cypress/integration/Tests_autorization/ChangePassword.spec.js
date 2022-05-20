@@ -19,6 +19,7 @@ describe("TC-333", ()  => {
         cy.get('input[formcontrolname="confirm_password"]').type("8CI3Uo3Ymp_");
         cy.log('Сменить пароль');
         cy.get('button[type="submit"]').click();
+        cy.url().should('eq', 'https://dev.ltdo.xyz/time');
 
 //TC-335: Ввести неверные старый пароль, новый пароль, подтверждение пароля
     cy.get('div[class="mat-menu-trigger avatar ng-star-inserted"]').click();
@@ -26,6 +27,7 @@ describe("TC-333", ()  => {
     cy.get('input[formcontrolname="old_password"]').type("привет");
     cy.get('input[formcontrolname="new_password"]').type("привет");
     cy.get('input[formcontrolname="confirm_password"]').type("привет");
+    cy.get('button[type="submit"]').should('be.disabled').wait(2000);
 
 //TC-336: Ввести новый пароль для КЭ 8-14 ( длиной 10, 8,14,9,13 символов)
     cy.get('input[formcontrolname="new_password"]').type(password());
