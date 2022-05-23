@@ -1,21 +1,12 @@
 describe('login', () => {
     it ('start', () => {
-        /*cy.visit('https://dev.ltdo.xyz/auth/login')
+        cy.visit('https://dev.ltdo.xyz/auth/login')
         cy.get("input[type='email']")
             .type('admin')
         cy.get("input[type='password']")
             .type('ltstudents')
             .type('{enter}')
-            .wait(3000)*/   
-
-            cy.request({
-                method: 'POST',
-                url: 'https://dev.ltdo.xyz/auth/login', 
-                body: {
-                  loginData: 'admin',
-                  password: 'ltstudents',
-                },
-              })
+            .wait(3000)   
         
     });
 });
