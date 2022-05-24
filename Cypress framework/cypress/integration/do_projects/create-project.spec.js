@@ -1,142 +1,136 @@
-import { c100, c300 } from "./pr_variables.js";
+import { setToken } from "./utils/auth"
+import { makeText } from "./pr_variables.js";
 
-describe('login', () => {
-    it ('start', () => {
-        cy.visit('https://dev.ltdo.xyz/auth/login')
-        cy.get("input[type='email']")
-            .type('admin', {delay:50})
-        cy.get("input[type='password']")
-            .type('ltstudents', {delay:50})
-            .type('{enter}')
-            .wait(3000)   
-    });
-});
-describe('TC-92-94', () => {
-    it ('start', () => {
+describe('create', () => {
+
+    beforeEach(setToken);
+
+    it ('TC-92-94', () => {
         cy.get("a[href*='/admin/dashboard']")
-            .click().wait(1000)        
+            .click()       
         cy.get("img[src*='project-icon']")
-            .click().wait(1000)
-        /*cy.get("div[class='mat-tab-links'] > a[href='/projects']")
-            .click().wait(1000)
+            .click()
+        cy.get('form')
+            .should('have.class', 'project-info')
+        cy.get("a[href='/projects']")
+            .click()
         cy.get("button[ng-reflect-router-link='new']")
             .should('be.visible') 
-            .click().wait(1000)*/
+            .click()
+        cy.get('form')
+            .should('have.class', 'project-info')
     });
-});   
-describe('TC-158', () => {
-    it ('start', () => {    
+
+    it ('TC-158', () => {    
         cy.get("input[formcontrolname='name']")
-            .click().wait(500)
+            .should('have.class', 'ng-untouched')
+            .click()
         cy.get("input[formcontrolname='shortDescription']")
-            .click().wait(500)
-        cy.get("button[type='submit']")
-            .should('have.disabled')                                              // 'create button' disabled
-    });
-});    
-describe('TC-159', () => {
-    it ('start', () => {
+            .click()
         cy.get("input[formcontrolname='name']")
-            .type('Cypress Autotest')                                             // DONT FORGET TO CHANGE THE NAME!                                    
+            .should('have.class', 'ng-invalid')
         cy.get("button[type='submit']")
-            .should('have.disabled')                                              // 'create button' still disabled
+            .should('have.disabled')                                              
     });
-});  
-describe('TC-165', () => {
-    it ('start', () => {    
+
+    it ('TC-159', () => {
+        cy.get("input[formcontrolname='name']")
+            .type( makeText(10) )
+            .should('have.class', 'ng-valid')                                                                                
+        cy.get("button[type='submit']")
+            .should('have.disabled')                                              
+    });
+
+    it ('TC-165', () => {    
         cy.get("mat-select[formcontrolname='departmentId']")
-            .click().wait(1000)
+            .should('have.class', 'ng-untouched')
+            .click()
         cy.get('.cdk-overlay-backdrop')
-            .click().wait(500)
-        cy.get("button[type='submit']")
-            .should('have.disabled')                                              // 'create button' still disabled
-    });
-}); 
-describe('TC-166-167', () => {
-    it ('start', () => {    
+            .click()
         cy.get("mat-select[formcontrolname='departmentId']")
-            .click().wait(1000)
-        cy.contains('Frontend')
-            .scrollIntoView({duration: 1000})
-            .click()
+            .should('have.class', 'ng-invalid')
         cy.get("button[type='submit']")
-            .should('have.enabled')                                               // 'create button' must be active now
+            .should('have.disabled')                                              
     });
-});
-describe('TC-188-192', () => {
-    it ('start', () => {
-        cy.get("mat-select[formcontrolname='status']")
+
+    it ('TC-166-167', () => {    
+        cy.get("mat-select[formcontrolname='departmentId']")
             .click()
-            .wait(500)
-        cy.get("div[id='cdk-overlay-1']")
+        cy.contains('Frontend')
+            .scrollIntoView({duration: 500})
+            .click()
+        cy.get("mat-select[formcontrolname='departmentId']")
+            .should('have.class', 'ng-valid')
+        cy.get("button[type='submit']")
+            .should('have.enabled')                                               
+    });
+
+    it ('TC-188-192', () => {
+        cy.get("mat-select[formcontrolname='status']")
+            .should('have.class', 'ng-valid')
+            .should('contain', 'Активный')
+            .click()
+        cy.get("div[role='listbox']")
             .should('contain','Приостановлен')
             .should('contain','Завершен')
             .should('contain','Активный')
         cy.get("mat-option[ng-reflect-value='Active']")
             .click()
-            .wait(500)
     });
-});   
-describe('TC-194', () => {
-    it ('start', () => {
+
+    it ('TC-194', () => {
         cy.get("input[formcontrolname='shortDescription']")
             .should('have.attr', 'maxlength')
-            .and('equal', '100')                                           // изменить на значение из ТЗ и\или скипнуть  
+            .and('equal', '100')                                           // spec value = 300
         cy.get("input[formcontrolname='shortDescription']")
-            .type(c100)
-            .wait(500)
+            .type( makeText(100) )
     });
-});
-describe('TC-200-205-209', () => {
-    it ('start', () => {    
+
+    it ('TC-200-205-209', () => {    
         cy.get("textarea[formcontrolname='description']")
             .should('have.attr', 'maxlength')
-            .and('equal', '300')                                           // изменить на значение из ТЗ и\или скипнуть
+            .and('equal', '300')                                           // spec value = unlimited
         cy.get("textarea[formcontrolname='description']")
-            .type(c300)
-            .wait(500)
+            .type( makeText(300) )
     });
-});
-// team ------------------------------------------------------------------------------------------------------------------------
-describe('TC-222', () => {
-    it ('start', () => {
+
+// team -------------------------------------------------
+
+    it ('TC-222', () => {
         cy.get("Button[color='accent']")
-            .click().wait(500)
+            .click()
         cy.get("div[class='mat-dialog-actions'] > button:last-child")
-            .should('have.disabled')                                        // 'add button' disabled
+            .should('have.disabled')                                        
         cy.get('.mat-dialog-content')
             .scrollTo(0, 500, {duration: 500})
-            .wait(200)
         cy.get('.mat-dialog-content')
-            .scrollTo(0, 1000, {duration: 500})
-            .wait(200)
-        cy.get('.mat-dialog-content')
-            .scrollTo(0, 1000, {duration: 500})
-            .wait(200)
+            .scrollTo(0, 500, {duration: 500})
         cy.contains('Admin New Admin')
             .scrollIntoView({duration: 500})
-            .click().wait(500)
+            .click()
+        cy.get("div[class='mat-dialog-actions'] > button:last-child")
+            .should('have.enabled')
+            .click()                                                    
+    });
+
+    it ('TC-xxx', () => {    
+        cy.get("Button[color='accent']")
+            .click()
+        cy.get("input[type='search']")
+            .click()
+            .type('Неадмин')
+            .type('{enter}')
+        cy.get("div[class='mat-dialog-actions'] > button:last-child")
+            .should('have.disabled')
+        cy.get('.mat-dialog-content')
+            .should('contain.text','Неадмин')                               
+            .click()
         cy.get("div[class='mat-dialog-actions'] > button:last-child")
             .should('have.enabled')
             .click()
-            .wait(500)                                                      // 'add button' enabled
-    });
-});    
-describe('TC-xxx', () => {
-    it ('start', () => {    
-        cy.get("Button[color='accent']")
-            .click().wait(500)
-        cy.get("input[ng-reflect-type='search']")
-            .type('Поликарп')
-            .type('{enter}')
-            .wait(500)
-     /* cy.get('.mat-dialog-content')
-            .should('contain.text','Поликарп')*/                             // "search" function is NOT working YET
-        cy.get("div[class='mat-dialog-actions'] > button:first-child")       // later: change to last-child
-            .click().wait(500)
-        
-     /* cy.get("button[type='submit']")                                    // create project (CHANGE NAME OR COMMENT IT!)
+     
+         cy.get("button[type='submit']")                                    
             .should('have.enabled')        
-            .click().wait(500)        */   
+            .click()           
     });
 });

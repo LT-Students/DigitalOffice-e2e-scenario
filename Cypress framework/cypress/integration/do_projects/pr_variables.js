@@ -1,4 +1,12 @@
+function makeText(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+<> ';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * 
+ charactersLength));
+   }
+   return result;
+}
 
-let c100 = "X3K5XjB5N518BG6DSAex7GYd2Jqsb3HgWDhX3Iqf5fY1dk9yliAdoDVSoTp5dlGcut85H7bXof2pwfr610DFuhHd7396v5XP22z_";
-let c300 = "J76AF0xwrO2BiHUIiIGKt1XDwEjp5eBVzqyh39lDzSL2KMUOOx3UMYr9MIslvCi3ZwJgLJpDETGOf0nGRhjDGuBt3FTwt1rZWAmfQT86WW4vCluaib6Dk2tZk2OpT9rZVosbIqBnlTwij9gotPCpYVvf6Dk871bWP61L5FxG5IPnWlRcTQXaqgUhHOf4MMkN2dNhnB70VCN7UWB10tHY7bUthfMFk8IS5PE81H52NZHz35O5qGFvpwvFlPZCAPIWSmBHZJjpz3akJE9fPiXejfN02vxZmrpA9GdHxkRz0qB_";
-export { c100, c300 };
+export { makeText };
