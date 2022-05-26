@@ -8,10 +8,11 @@ describe( 'TC-99', () => {
         cy.get('input[type="email"]').type(login);
         cy.get('input[type="password"]').type(password);
         cy.get('button[type="submit"]').click();
+        cy.url().should('eq', 'https://dev.ltdo.xyz/time');
     });
 });
 
-//TC-284: Ввести верный логин/email и неверный парольь
+//TC-284: Ввести верный логин/email и неверный пароль
 describe('TC-284', () => {
     it ('tc-284', () => {
         cy.visit('https://dev.ltdo.xyz/auth/login');
@@ -19,7 +20,7 @@ describe('TC-284', () => {
         cy.get('input[type="password"]').type(password())
             function password() {
             var text = "";
-            var possible = "Привет嗨你好你好嗎.;;$%^&*(:№";
+            var possible = "Приветвсемкакделаделишки嗨你好你好嗎.;;$%^&*(:№";
                 
             for (var i = 0; i < 10; i++)
             text += possible.charAt(Math.floor(Math.random() * possible.length));
@@ -27,6 +28,7 @@ describe('TC-284', () => {
             return text;
             }
         cy.get('button[type="submit"]').click();
+        cy.url().should('eq', 'https://dev.ltdo.xyz/auth/login');
     });
 });
 
@@ -46,10 +48,11 @@ describe('TC-285', () => {
             }
         cy.get('input[type="password"]').type("8CI3Uo3Ymp_");
         cy.get('button[type="submit"]').click();
+        cy.url().should('eq', 'https://dev.ltdo.xyz/auth/login');
     });
 });
 
-//TC-286: Ввести неверные логин/email и не верный пароль
+//TC-286: Ввести неверные логин/email и неверный пароль
 describe('TC-286', () => {
     it ('tc-286', () => {
         cy.visit('https://dev.ltdo.xyz/auth/login');
@@ -74,6 +77,7 @@ describe('TC-286', () => {
             return text;
             }
         cy.get('button[type="submit"]').click();
+        cy.url().should('eq', 'https://dev.ltdo.xyz/auth/login');
     });
 });
 
@@ -82,6 +86,7 @@ describe('TC-287', () => {
     it ('tc-287', () => {
         cy.visit('https://dev.ltdo.xyz/auth/login');
         cy.get('input[type="password"]').type("8CI3Uo3Ymp_");
+        cy.get('button[type="submit"]').should('be.disabled').wait(2000);
     });
 });
 
@@ -90,6 +95,7 @@ describe('TC-288', () => {
     it ('tc-288', () => {
         cy.visit('https://dev.ltdo.xyz/auth/login');
         cy.get('input[type="email"]').type('Marina1');
+        cy.get('button[type="submit"]').should('be.disabled').wait(2000);
     });
 });
 
@@ -105,7 +111,8 @@ describe('TC-293', () => {
             return str.replace(/[^a-zA-Z0-9 -]/, "   ");
                 //. "); //(/[^a-zA-Z0-9 -]/, "   ");
             };
-        cy.get('button[type="submit"]').click();
+        cy.get('button[type="submit"]').should('be.visible').click();
+        cy.url().should('eq', 'https://dev.ltdo.xyz/auth/login');
     });
 });
 
@@ -121,6 +128,7 @@ describe('TC-296', () => {
             };
         cy.get('input[type="password"]').type("8CI3Uo3Ymp_");
         cy.get('button[type="submit"]').click();
+        cy.url().should('eq', 'https://dev.ltdo.xyz/auth/login');
     });
 });
 
@@ -128,7 +136,7 @@ describe('TC-296', () => {
 describe('TC-297', () => {
     it ('tc-297', () => {
         cy.visit('https://dev.ltdo.xyz/auth/login');
-        cy.get('input[type="email"]').type('Marina1');
+        cy.get('input[type="email"]').type("Marina1");
         cy.get('input[type="password"]').type(password())
             function password() {
             var str = "8CI3Uo3Ymp_";
@@ -136,6 +144,7 @@ describe('TC-297', () => {
             return str.toUpperCase();
             };
         cy.get('button[type="submit"]').click();
+        cy.url().should('eq', 'https://dev.ltdo.xyz/auth/login');
     });
 });
 
