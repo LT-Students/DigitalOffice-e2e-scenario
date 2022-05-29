@@ -21,9 +21,6 @@ describe("log in", ()  => {
       cy.log('Переход на страницу почты');
       cy.log('Клик по кнопке "Войти"');
       cy.get('a[class="control button2 button2_view_classic button2_size_mail-big button2_theme_mail-white button2_type_link HeadBanner-Button HeadBanner-Button-Enter with-shadow"]').click();
-      //cy.wait(13000);
-     // cy.log('Клик по полю "Имя аккаунта"');
-      //cy.get('input.input-0-2-71').type("timofeeva.m@inbox.ru");autocomplete="username"
       cy.get('input[data-t="field:input-login"]').type("marinabarselona");
       cy.get('button[data-test-id="next-button"]').click();
       cy.log('Клик по полю "Пароль"');

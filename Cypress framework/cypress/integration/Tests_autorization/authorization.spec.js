@@ -18,6 +18,7 @@ describe('TC-284', () => {
         cy.visit('https://dev.ltdo.xyz/auth/login');
         cy.get('input[type="email"]').type('Marina1');
         cy.get('input[type="password"]').type(password())
+
             function password() {
             var text = "";
             var possible = "Приветвсемкакделаделишки嗨你好你好嗎.;;$%^&*(:№";
@@ -37,6 +38,7 @@ describe('TC-285', () => {
     it ('tc-285', () => {
         cy.visit('https://dev.ltdo.xyz/auth/login');
         cy.get('input[type="email"]').type(email())
+
             function email() {
             var text = "";
             var possible = "Привет嗨你好你好嗎.;;$%^&*(:№";
@@ -57,6 +59,7 @@ describe('TC-286', () => {
     it ('tc-286', () => {
         cy.visit('https://dev.ltdo.xyz/auth/login');
         cy.get('input[type="email"]').type(email())
+
         function email() {
             var text = "";
             var possible = "Привет嗨你好你好嗎.;;$%^&*(:№";
@@ -105,11 +108,11 @@ describe('TC-293', () => {
         cy.visit('https://dev.ltdo.xyz/auth/login');
         cy.get('input[type="email"]').type('Marina1');
         cy.get('input[type="password"]').type(password())
+
             function password() {
             var str = "8CI3Uo3Ymp_";
 
             return str.replace(/[^a-zA-Z0-9 -]/, "   ");
-                //. "); //(/[^a-zA-Z0-9 -]/, "   ");
             };
         cy.get('button[type="submit"]').should('be.visible').click();
         cy.url().should('eq', 'https://dev.ltdo.xyz/auth/login');
@@ -121,6 +124,7 @@ describe('TC-296', () => {
     it ('tc-296', () => {
         cy.visit('https://dev.ltdo.xyz/auth/login');
         cy.get('input[type="email"]').type(email())
+
             function email() {
             var str = "Marina1";
 
@@ -138,6 +142,7 @@ describe('TC-297', () => {
         cy.visit('https://dev.ltdo.xyz/auth/login');
         cy.get('input[type="email"]').type("Marina1");
         cy.get('input[type="password"]').type(password())
+        
             function password() {
             var str = "8CI3Uo3Ymp_";
 
