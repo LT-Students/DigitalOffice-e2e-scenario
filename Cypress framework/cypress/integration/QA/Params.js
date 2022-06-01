@@ -12,8 +12,8 @@ export { gen1 };
 
   // a try
   function login() { 
-    let login = 'Alyona';
-    let password = '5WZWqx#NPK';
+    let login = 'AlyonaMartynova';
+    let password = 'r9_Kice!';
     cy.visit("https://dev.ltdo.xyz/auth/login");
     cy.get('input[type="email"]').type(login);
     cy.get('input[type="password"]').type(password);
