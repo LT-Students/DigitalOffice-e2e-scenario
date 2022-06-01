@@ -5,11 +5,11 @@ describe('login', () => {
     it ('start', () => {
         cy.visit('https://dev.ltdo.xyz/auth/login')
         cy.get("input[type='email']")
-            .type('admin', {delay:50})
+            .type('olaf6642', {delay:50})
         cy.get("input[type='password']")
-            .type('ltstudents', {delay:50})
+            .type('hs$L7Cx!', {delay:50})
             .type('{enter}')
-        cy.wait(5000).then( () => {
+        cy.wait(3000).then( () => {
             token = localStorage.getItem('access_token')
         })
         
