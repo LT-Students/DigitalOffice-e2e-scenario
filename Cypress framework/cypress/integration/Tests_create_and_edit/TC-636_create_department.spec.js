@@ -3,9 +3,9 @@ describe("log in", ()  => {
     cy.visit('https://dev.ltdo.xyz/auth/login');
     cy.log('Переход на страницу авторизации');
   
-    cy.get('input[type="email"]').type("admin");
+    cy.get('input[type="email"]').type("Marina");
     cy.log('Пароль');
-    cy.get('input[type="password"]').type("ltstudents");
+    cy.get('input[type="password"]').type("f3Hv*rEj");
     
     cy.log('Клик по кнопке "Войти"');
     cy.get('button[type="submit"]').click(); 
